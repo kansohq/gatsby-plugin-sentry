@@ -16,11 +16,18 @@ plugins: [
     resolve: 'gatsby-plugin-sentry',
     options: {
       dsn: 'YOUR_SENTRY_DSN_URL',
-      // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
-      config: {
-        environment: 'staging'
-      }
+      // Optional configuration, see https://docs.sentry.io/learn/configuration/?platform=browsernpm
+      environment: 'staging',
     },
   },
 ]
+```
+
+```javascript
+// In your code where you want to catch exceptions
+
+import * as Sentry from '@sentry/browser'
+Sentry.captureException(new Error('My Error'))
+
+// More examples: https://docs.sentry.io/learn/capturing/?platform=browsernpm#capturing-errors--exceptions
 ```
